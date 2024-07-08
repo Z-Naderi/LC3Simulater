@@ -2,13 +2,14 @@
 
 ## Overview
 
-This project provides a simulator for the LC3 (Little Computer 3) architecture, a 16-bit computer architecture used primarily for educational purposes. The simulator reads LC3 assembly language programs, converts them into machine code, and executes them while providing a detailed visualization of the process.
+This project is an LC3 (Little Computer 3) simulator that takes an assembly file as input. Initially, it parses through the code to identify labels and their corresponding addresses. Then, it translates instructions based on their opcodes into binary machine code and writes them to a binary file. The simulator then reads from this binary file during simulation to populate memory.
 
 ## Features
 
-- **Full Instruction Set Support**: Supports all LC3 instructions including data movement, arithmetic, logic, and control flow instructions.
-- **Memory and Register Visualization**: Visual tools for monitoring memory contents and register states.
-- **Step-by-Step Execution**: Allows users to execute programs one instruction at a time, ideal for learning and debugging.
+- **Label and Address Parsing**: Parses through assembly code to identify labels and their respective addresses.
+- **Instruction Translation**: Translates instructions into binary machine code based on their opcodes.
+- **Binary File Output**: Writes the translated machine code into a binary file for simulation.
+- **Memory Population**: Reads from the binary file to populate memory during simulation.
 
 ## LC3 Architecture
 
@@ -28,39 +29,36 @@ This project provides a simulator for the LC3 (Little Computer 3) architecture, 
 
 ## Instruction Cycle
 
-The LC3 simulator emulates the six stages of the instruction cycle:
+The LC3 simulator follows the standard six-phase instruction cycle:
 
-1. **Fetch**: 
-   - Load the next instruction from memory into the Instruction Register (IR).
-   - Copy the address in the PC to the Memory Address Register (MAR).
-   - Send a "read" signal to memory and load the data from the Memory Data Register (MDR) into the IR.
-   - Increment the PC to point to the next instruction.
+1. **Fetch**:
+   - Loads the next instruction from memory into the Instruction Register (IR).
+   - Copies the address in the Program Counter (PC) to the Memory Address Register (MAR).
+   - Sends a "read" signal to memory and loads the data from the Memory Data Register (MDR) into the IR.
+   - Increments the PC to point to the next instruction.
 
 2. **Decode**:
-   - Determine the opcode and identify other operands.
+   - Determines the opcode and identifies other operands.
 
 3. **Evaluate Address**:
-   - Compute the memory address required for the instruction.
+   - Computes the memory address required for the instruction.
 
 4. **Fetch Operands**:
-   - Retrieve the necessary operands from memory or registers.
+   - Retrieves the necessary operands from memory or registers.
 
 5. **Execute**:
-   - Perform the operation specified by the instruction.
+   - Performs the operation specified by the instruction.
 
 6. **Store**:
-   - Write the result to the destination register or memory location.
+   - Writes the result to the destination register or memory location.
 
 ### Usage Instructions
 
 1. **Upload Assembly File**:
    - Press the "Upload" button to load your LC3 assembly file.
 
-2. **Assemble Code**:
-   - Press the "Assemble" button to convert the assembly code into machine code. A success message will be displayed if the assembly is successful.
-
-3. **Execute Instructions**:
-   - Use the "Next Step" button to proceed through each phase of the instruction cycle for each command, observing the detailed changes in memory and register states.
+2. **Execute Instructions**:
+   - Use the "Next Phase" button to proceed through each phase of the instruction cycle for each command, observing the detailed changes in memory and register states.
 
 ### Visualization
 
@@ -69,13 +67,7 @@ The simulator provides a detailed visualization interface that allows users to s
 - **Register States**: The contents of all registers (R0-R7, PC, IR, CC).
 - **Memory Content**: The contents of the memory locations being accessed.
 
-### Example Workflow
-
-1. Load your LC3 assembly program by pressing the "Upload" button.
-2. Press the "Assemble" button to translate the assembly code into binary machine code.
-3. Begin execution by pressing the "Next Step" button. Each press will advance the execution by one phase of the instruction cycle, allowing you to monitor the state changes in detail.
-
 ### Screenshot
 
-![LC3](https://github.com/Z-Naderi/LC3Simulater/blob/main/LC3.png)
+![LC3 Simulator](https://github.com/Z-Naderi/LC3Simulater/blob/main/LC3.png)
 
